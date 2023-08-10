@@ -26,15 +26,18 @@ document.addEventListener('DOMContentLoaded', function() {
 })
 
 function appendItemstoCart(items, ele) {
-    let s = '';
-    for(let item of items) 
-    //  s += `<p>${item}</p>`;
-        s += `<button class="item-button">${item[1]}</button>`;
-    ele.innerHTML = s;
+    for(let item of items) {
+        let button = document.createElement('li');
+        button.class = 'item-button';
+        button.textContent = item[1];
+        button.addEventListener('dblclick', () => {
+            remove(ref(database, `Entries/${item[0]}`));
+        })
+        ele.append(button);
+    }
 }
 
 //fetch from firebase
-//whenever DB updates - but how does it work at start too?
 onValue(listItems, function(snapshot) {
     let itemsArr = Object.entries(snapshot.val());
     console.log(itemsArr);
@@ -45,15 +48,5 @@ onValue(listItems, function(snapshot) {
     appendItemstoCart(itemsArr, div);
 })
 
-
-/*
-Storage:
-Get all from DB
-Add new             push()
-Delete
-
-Display:
-Get all from DB
-Add new directly
-Delete directly
-*/
+document.getElementsByTagName('input')[0].addEventListener('focusin', () => {document.getElementsByTagName('input')[0].value = "";})
+document.getElementsByTagName('input')[0].addEventListener('focusout', () => {document.getElementsByTagName('input')[0].value = "Bread";})
