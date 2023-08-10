@@ -1,0 +1,39 @@
+img {
+    display: block;
+    margin: auto;
+    max-width: 50%;
+    max-height: 10%;
+}
+
+#input, #add-button {
+    display: block;
+    margin: 20px auto;
+    max-width: 80%;
+    max-height: 10%;
+}
+
+#input {
+    text-align: center;
+}
+
+#add-button {
+    color: white;
+    background-color: brown;
+}
+
+#cart {
+    margin: auto;
+    max-width: 10%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#cart button {
+    margin: 10px;
+    border: 2px solid green;
+    padding: 10px;
+    flex-grow: 1;
+    color: #3b2828;
+    font-family: 'Comic Sans MS'
+}
