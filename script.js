@@ -45,7 +45,9 @@ onValue(listItems, function(snapshot) {
     let div = document.getElementById('cart');
     div.innerHTML = "";
 
-    appendItemstoCart(itemsArr, div);
+    let ul = document.createElement('ul');
+    div.append(ul);
+    appendItemstoCart(itemsArr, ul);
 })
 
 document.getElementsByTagName('input')[0].addEventListener('focusin', () => {document.getElementsByTagName('input')[0].value = "";})
