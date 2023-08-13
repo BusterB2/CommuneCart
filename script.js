@@ -19,10 +19,9 @@ document.getElementById('add-button').addEventListener('click', function () {
 })
 
 document.addEventListener('DOMContentLoaded', function() {
-    let div = document.createElement('div');
-    document.body.append(div);
-    div.id = "cart";
-    div.innerHTML = `<p>There are currently no items</p>`;
+    let ul = document.createElement('ul');
+    document.body.append(ul);
+    ul.id = "cart";
 })
 
 function appendItemstoCart(items, ele) {
@@ -39,16 +38,17 @@ function appendItemstoCart(items, ele) {
 
 //fetch from firebase
 onValue(listItems, function(snapshot) {
-    let itemsArr = Object.entries(snapshot.val());
-    console.log(itemsArr);
 
-    let div = document.getElementById('cart');
-    div.innerHTML = "";
+    let ul = document.getElementById('cart');
+    ul.innerHTML = "";
 
-    let ul = document.createElement('ul');
-    div.append(ul);
-    appendItemstoCart(itemsArr, ul);
+    if(snapshot.exists()) {
+        let itemsArr = Object.entries(snapshot.val());
+        appendItemstoCart(itemsArr, ul);
+    } else {
+        ul.innerHTML = `No items here... yet`;
+    }
+    
 })
 
 document.getElementsByTagName('input')[0].addEventListener('focusin', () => {document.getElementsByTagName('input')[0].value = "";})
-document.getElementsByTagName('input')[0].addEventListener('focusout', () => {document.getElementsByTagName('input')[0].value = "Bread";})

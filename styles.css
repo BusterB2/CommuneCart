@@ -40,21 +40,18 @@ button {
     font-family: 'Rubik', sans-serif;
 }
 
-#cart {
+ul {
     margin: auto;
     max-width: 13%;    
-}
-
-ul {
     list-style-type: none;
     padding: 0;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+    font-size: 20px;
 }
 
-
-#cart li {
+li {
     font-size: 18px;
     background-color: #FFFDF8;
     padding: 15px;
